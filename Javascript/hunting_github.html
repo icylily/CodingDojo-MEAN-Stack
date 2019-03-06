@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#get_name").click(function () {
+                $.get("https://api.github.com/users/icylily", displayName)
+                // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+                function displayName(data) {
+                    console.log(data);
+                    console.log(data.name);
+                    $("#name").html(data.name);
+                    // $("#name").html(data);
+                }
+                // $("name").html("Hello <b>world!</b>");
+            });
+            
+        });
+       
+    
+    </script>
+    <title>Hunting Github</title>
+</head>
+<body>
+
+    <button id="get_name">Get My Name form Github</button>
+    <h1 id="name"></h1>
+
+    <button id="get_name_promise">Get My Name form Github-promice</button>
+    <h1 id="name-1"></h1>
+    
+</body>
+</html>

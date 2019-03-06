@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript</title>
+    <!-- <script src="js_object.js"></script> -->
+    <!-- <script src="js_hoisting.js"></script> -->
+    <!-- <script src="callback.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    // assuming you have jQuery
+        $(document).ready(function () {
+            var favoritePokemon;
+            // the given link is for Bulbasaur's information
+            $.get("https://pokeapi.co/api/v2/pokemon/2/", function (data) {
+                favoritePokemon = data.name;
+                console.log("Got my favorite Pokemon", favoritePokemon);      // Predict the output!
+            });
+        });     </script>
+</head>
+
+<body>
+    <h1>Run Javascript! Look at console!!</h1>
+</body>
+</html>
