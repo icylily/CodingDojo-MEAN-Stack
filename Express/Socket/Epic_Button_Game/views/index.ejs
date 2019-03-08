@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script type ="text/javascript">
+        $(document).ready(function (){
+    
+            var socket = io(); //1
+            var me = 0;
+            $("#submit").click(function () {
+                me+=1;
+                socket.emit("client_submit", { response: 1, click_by_me:me, });
+                
+                return false;
+            });
+             $("#reset").click(function () {
+                me=0;
+                socket.emit("client_submit", { response: 2 , click_by_me:"reset",});
+                
+                return false;
+            });
+            socket.on("updated_message", function (server_data) {
+                console.log("------date from server-----\n" + server_data.count);
+                $("#server-response").html(server_data.count).show();
+                if(server_data.you == "reset"){
+                    console.log("reset",server_data.you)
+                    $("#server-response-me").html('0').show(); 
+                }
+
+            });
+            socket.on("updateClient", function (server_data) {
+                console.log("------date from updateClient-----\n" + server_data.you);
+                $("#server-response-me").html(server_data.you).show();
+                
+            });
+          
+         })
+    </script>
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class = "col-10">
+            <div class="row"> <h1>The Button has been pushed <span id="server-response" style="color:red">0</span> time(s).</h1></div>
+            <div class="row"><h3>I clicked on it myself <span id="server-response-me">0</span> times.</h3></div>
+        </div>
+    </div>
+    <div class="row">></span>
+        <div class="col-2" id="server-response"></div>
+        <div class="col-4">
+            <form action="/process" method="POST">
+                <button type="submit" class="btn btn-primary" id = "submit">Submit</button>
+                <button type="reset" class="btn btn-primary" id="reset">Reset</button>
+            </form>
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+    
+</body>
+</html>
