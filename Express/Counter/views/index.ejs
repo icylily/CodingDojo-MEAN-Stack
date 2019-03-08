@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+</head>
+<body>
+    <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 text-center"><h1>Couter</h1><br>
+            <h2><%=times%> times</h2></div>
+            <div class="col-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <form action="/addTwo" method="post">
+            <button class="btn btn-primary btn-lg btn-block mt-5 mb-5"> Add 2</button>
+            </form>
+
+            <form action="/reset" method="post">
+                <button class="btn btn-primary btn-lg btn-block"> Reset</button>
+            </form>
+            
+           
+        </div>
+        <div class="col-4"></div>
+    </div>
+   
+</body>
+</html>
