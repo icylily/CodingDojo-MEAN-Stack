@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script type ="text/javascript">
+        $(document).ready(function (){
+    
+            var socket = io(); //1
+            
+            // socket.on('greeting', function (data) { //4
+            //     console.log(data.msg); //5
+            //     socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+
+            // });
+            $("form").submit(function (e) {
+                e.preventDefault();
+                var formValues = $(this).serialize();
+                socket.emit("posting_form", { response: formValues });
+                console.log(formValues);
+                return false;
+            });
+            socket.on("updated_message", function (server_data) {
+                console.log("------date from server-----\n"+server_data.response);
+                $("#server-response").html(server_data.response).show();
+            });
+         })
+    </script>
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-4" id="server-response"></div>
+        <div class="col-4">
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" class="form-control" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <select class="form-control" name="location" id="location">
+                        <option value="seattle">Seattle</option>
+                        <option value="dc">DC</option>
+                        <option value="mountview">Mountview</option>
+                        <option value="siliconvalley">CA</option>
+            
+            
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">Location:</label>
+                    <select class="form-control" name="language" id="language">
+                        <option value="javascript">Javascript</option>
+                        <option value="python">Python</option>
+                        <option value="csharp">C#</option>
+                        <option value="java">Java</option>
+                        <option value="html">Html</option>
+                        <option value="css">Css</option>
+            
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description" id="description" cols="100" rows="10"> Desctiption here</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id = "submit">Submit</button>
+            </form>
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+    
+</body>
+</html>

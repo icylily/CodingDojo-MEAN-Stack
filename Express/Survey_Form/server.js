@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var app = express();
+var querystring = require("querystring");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/static"));
 app.set('views', __dirname + '/views');
