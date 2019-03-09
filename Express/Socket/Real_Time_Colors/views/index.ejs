@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script type ="text/javascript">
+        $(document).ready(function (){
+    
+            var socket = io(); //1
+            $("#green").click(function(){
+                // $("body").css("background-color","green");
+                socket.emit("client_submit",{color:"green"});
+            });
+            $("#blue").click(function () {
+                // $("body").css("background-color","green");
+                socket.emit("client_submit", { color: "blue" });
+            });
+            $("#pink").click(function () {
+                // $("body").css("background-color","green");
+                socket.emit("client_submit", { color: "pink" });
+            });
+            socket.on("updateClient",function(server_data){
+
+                $("body").css("background-color",server_data.color);
+            });
+
+            // var me = 0;
+            // $("#submit").click(function () {
+            //     me+=1;
+            //     socket.emit("client_submit", { response: 1, click_by_me:me, });
+                
+            //     return false;
+            // });
+            //  $("#reset").click(function () {
+            //     me=0;
+            //     socket.emit("client_submit", { response: 2 , click_by_me:"reset",});
+                
+            //     return false;
+            // });
+            // socket.on("updated_message", function (server_data) {
+            //     console.log("------date from server-----\n" + server_data.count);
+            //     $("#server-response").html(server_data.count).show();
+            //     if(server_data.you == "reset"){
+            //         console.log("reset",server_data.you)
+            //         $("#server-response-me").html('0').show(); 
+            //     }
+
+            // });
+            // socket.on("updateClient", function (server_data) {
+            //     console.log("------date from updateClient-----\n" + server_data.you);
+            //     $("#server-response-me").html(server_data.you).show();
+                
+            // });
+          
+         })
+    </script>
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="row">
+    </div>
+    <div class="row">></span>
+        <div class="col-2" id="server-response"></div>
+        <div class="col-4">
+          
+                <button type="submit" class="btn " id = "green">Green</button>
+                <button type="submit" class="btn " id="blue">Blue</button>
+                <button type="submit" class="btn " id="pink">Pink</button>
+         
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+    
+</body>
+</html>
