@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%;">
+
+<head>
+    <title>Notifications!</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io.connect();
+            
+            // socket.emit("got_new_user", { name: name });
+            $('#btn').click(function () {
+                socket.emit("notify_everyone");
+            });
+            socket.on('client_conneted', function (data) {
+                $("#chatbox").append("<p>" +"Socket ID " + data.id + "joined us."+"</p>");
+            });
+            socket.on('triggered_notify', function (data) {
+                $("#chatbox").append("<p>" + "Socket ID " + data.id + "just triggered a notification. " + "</p>");
+            });
+            socket.on('user_disconnect', function (data) {
+                $("#chatbox").append("<p>" + "Socket ID " + data.id + "left us." + "</p>");
+            });
+            
+        });
+    </script>
+</head>
+
+<body style="height: 100%; width: 100%; margin: 20px;">
+    <h2 >Notifications</h2>
+    <button id="btn" class="btn btn-primary">Notify Everyone</button>
+    <div id="chatbox" style="margin-bottom: 20px; padding:10px; width: 75%; min-height: 70%; border:2px solid blue; background-color:burlywood">
+    </div>
+    
+</body>
+
+</html>

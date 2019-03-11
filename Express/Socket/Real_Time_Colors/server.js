@@ -34,20 +34,7 @@ io.on('connection', function (socket) {
         backgound_color = data.color;
         console.log("now backgound_color is " + backgound_color);
         io.emit('updateClient', { color: backgound_color });
-        // if (data.response ==1){
-        //     count+=1;
-        //     socket.emit('updateClient', { you: data.click_by_me });
-        //     io.emit('updated_message', { count: count });
-        // }  
-        // else if(data.response ==2){
-        //     count = 0;
-        //     // socket.emit('updateClient', { you: data.click_by_me });
-        //     io.emit('updated_message', { count: count, you: data.click_by_me });
-        // }
-
+        
     });
-    // socket.on('gamma', function (data) {
-    //     // socket.broadcast will message all socket clients except the one that triggered the 'gamma' listener
-    //     socket.broadcast.emit('updateAllExceptOne', { count: count });
-    // });
+ 
 });
