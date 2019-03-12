@@ -22,12 +22,12 @@ io.sockets.on('connection', function (socket) {
         socket.emit('existing_messages', messages);
         io.emit("display_new_user", {name:data.name})
 });
-socket.on("new_message", function(data){
+    socket.on("new_message", function(data){
     messages[id] = {name:data.name, message:data.message};
     io.emit("update_messages", messages[id]);
     id++;
 });
-socket.on("disconnect", function(){
+    socket.on("disconnect", function(){
     io.emit("user_disconnect", users[socket.id])
     })
 });

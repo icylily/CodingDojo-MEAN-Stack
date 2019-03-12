@@ -21,11 +21,7 @@ const server = app.listen(port,function(){
 const io= require('socket.io')(server);
 
 io.on('connection', function (socket) {
-
-    // socket.on('alpha', function (data) {
-    //     // socket.emit will respond back to the socket client that triggered this 'alpha' listener
-    //     socket.emit('updateClient', { count: count });
-    // });
+        
     socket.on('client_submit', function (data) {
         // io.emit will message all socket clients
         if (data.response ==1){
