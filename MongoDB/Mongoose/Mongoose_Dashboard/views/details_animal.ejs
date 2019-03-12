@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%;">
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../stylesheets/bootstrap.min.css"> -->
+
+    <title>Details animal</title>
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <!-- My template!! -->
+                <div class="col-4 pt-1">
+                    <h2 class="text-left">
+                        <%=info.name%>'s Facts
+                    </h2>
+                </div>
+                <div class="col-4 pt-1">
+                    <p class="blog-header-logo text-dark">
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <!-- <a class="btn btn-sm btn-outline-secondary" href="/logout">Log out</a> -->
+                </div>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-5 ">
+                <form action="">
+                    <fieldset>
+                        <label for="name ">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Animal's name" value=<%=info.name%> readonly>
+
+                        <label for="kingdom ">Kingdom</label>
+                        <input type="text" class="form-control" name="kingdom" placeholder="kingdom" value=<%=info.kingdom%> readonly>
+                        <label for="phylum ">Phylum</label>
+                        <input type="text" class="form-control" name="phylum" placeholder="" value=<%=info.phylum%> readonly>
+                        <label for="lifestyle ">lifestyle</label>
+                        <input type="text" class="form-control" name="lifestyle" placeholder="" value=<%=info.lifestyle%> readonly>
+                        <label for="skin_type ">skin_type</label>
+                        <input type="text" class="form-control" name="skin_type" placeholder="" value=<%=info.skin_type%> readonly>
+                        <label for="favourite_food ">favourite_food</label>
+                        <input type="text" class="form-control" name="favourite_food" placeholder="" value=<%=info.favourite_food%> readonly>
+                        <label for="desctiption ">Description</label>
+                        <textarea class="form-control" name="description"  cols="100"
+                            rows="5"  readonly><%=info.description%></textarea>
+
+                        <p class="text-right">
+                            <a class="btn btn-primary btn-lg  my-3" href="/">Go Back</a>
+                            <a class="btn btn-primary btn-lg  my-3" href="/animals/edit/<%= info._id %>">Edit</a></p>
+                        <!-- <div class="pull-right"><button class="btn btn-primary btn-lg  my-3 " type="submit">Add</button></div> -->
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!--end container -->
+
+</body>
+
+
+</html>

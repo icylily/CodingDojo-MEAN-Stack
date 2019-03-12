@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%;">
+
+<head>
+    <title>Quoting Dojo!</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css">
+    
+    <title>Basic mongoose app</title>
+</head>
+
+<body style="height: 100%; width: 100%; margin: 20px;">
+    <div class="row">
+        <div class="content-right">
+            <h2>All animals</h2>
+            <div style="text-align:right"><a class="align-right" href="/animals/new" style="text-align:right">Add a new animal</a>
+            <table class="table table-striped table-bordered table-bordered">
+                <tr>
+                    <th>
+                        <p>Name</p>
+                    </th>
+                    <th>
+                        <p>kingdom</p>
+                    </th>
+                    <th>
+                        <p>phylum</p>
+                    </th>
+                    <th>
+                        <p>lifestyle</p>
+                    </th>
+                    <th>
+                        <p>Action</p>
+                    </th>
+    
+                </tr>
+                <% for (var i in info) { %>
+                <tr>
+                    <td>
+                        <p><a href="/animals/<%= info[i].id %>"><%= info[i].name %></a></p>
+                    </td>
+                    <td>
+                        <p><%= info[i].kingdom %></p>
+                    </td>
+                    <td>
+                        <p><%= info[i].phylum %></p>
+                    </td>
+                    <td>
+                        <p><%= info[i].lifestyle %></p>
+                    </td>
+                    <td>
+                        <p> <form action="/animals/destroy/<%= info[i]._id %>" method="post">
+                            <button class ="btn btn-primary">Remove</button>
+                        </form> 
+                        <a   class ="btn btn-primary mt-2" href="/animals/edit/<%= info[i]._id %>">
+                            Edit</a> </fors>
+                        
+                        </p>
+                    </td>
+    
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+    
+
+    
+   
+</body>
+
+</html>

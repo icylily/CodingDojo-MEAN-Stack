@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Details</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <!-- My template!! -->
+            <div class="col-4 pt-1">
+                <h2 class="text-left">
+                    <%=info.name%>'s Facts
+                </h2>
+            </div>
+            <div class="col-4 pt-1">
+                <p class="blog-header-logo text-dark">
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <!-- <a class="btn btn-sm btn-outline-secondary" href="/logout">Log out</a> -->
+            </div>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-5 ">
+            <form action="/animals/edit_process/<%= info._id %>" method="POST">
+                <fieldset>
+                    <label for="name ">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Animal's name" value=<%=info.name%>
+                        required>
+
+                    <label for="kingdom ">Kingdom</label>
+                    <input type="text" class="form-control" name="kingdom" placeholder="kingdom" value=<%=info.kingdom%>
+                        required>
+                    <label for="phylum ">Phylum</label>
+                    <input type="text" class="form-control" name="phylum" placeholder="" value=<%=info.phylum%>
+                        required>
+                    <label for="lifestyle ">lifestyle</label>
+                    <input type="text" class="form-control" name="lifestyle" placeholder="" value=<%=info.lifestyle%>
+                        required>
+                    <label for="skin_type ">skin_type</label>
+                    <input type="text" class="form-control" name="skin_type" placeholder="" value=<%=info.skin_type%>
+                        required>
+                    <label for="favourite_food ">favourite_food</label>
+                    <input type="text" class="form-control" name="favourite_food" placeholder=""
+                        value=<%=info.favourite_food%> required>
+                    <label for="desctiption ">Description</label>
+                    <textarea class="form-control" name="description" cols="100"
+                        rows="5"><%=info.description%></textarea>
+
+                    <p class="text-right">
+                        <a class="btn btn-primary btn-lg  my-3" href="/">Go Back</a>
+                        <button class="btn btn-primary btn-lg  my-3">Edit</button></p>
+                    <!-- <div class="pull-right"><button class="btn btn-primary btn-lg  my-3 " type="submit">Add</button></div> -->
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <!--end container -->
+</body>
+</html>
