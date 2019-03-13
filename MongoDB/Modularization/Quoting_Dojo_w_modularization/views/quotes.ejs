@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%;">
+
+<head>
+    <title>Quotes!</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+
+    
+</head>
+
+<body style="height: 100%; width: 100%; margin: 20px;">
+
+
+
+    <div class="row">
+        <!-- <div class="col-4"></div> -->
+        <div class="col-8 " style="border:solid  2px blue; border-radius:5% ; margin:auto">
+            <h2 class="text-center text-dark">Here are some awesome quotes!</h2>
+            <div style="text-align:right"><a class="align-right" href="/" style="text-align:right">Go back</a>
+            <br></div>  
+            
+            <% for (var i in info) { %>
+            <h3 class="mt-0 mb-0 pt-0 pb-0 align-left text-secondary"> <%= info[i].name %> </h3> <br>
+            <h5 class="mt-0 mb-0  pt-0 pb-0 align-right text-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- <%= info[i].user %> at <%= moment(info[i].created_at).format( 'hh:mm a MMM-DD-YYYY') %></h5><br>
+            <% } %>
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+</body>
+
+</html>
