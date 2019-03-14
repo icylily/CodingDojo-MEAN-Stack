@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/namesdb', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/taskdb', { useNewUrlParser: true });
 
 const TaskSchema = new mongoose.Schema({
     title: String,
